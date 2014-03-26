@@ -1,0 +1,28 @@
+<html>
+<head>
+
+</head>
+<body>
+	hello world
+	<script type="text/javascript" src="./sea-modules/seajs/seajs/2.2.1/sea.js" id="seajsnode"></script>
+	<script type="text/javascript">
+		seajs.config({
+			base:'./branch'//只有在服务器上才可以
+			alias:{
+				'jquery':'lib/jquery.js',
+				'underscore':'lib/unserscore.js'
+			},
+			paths:{
+				src:'app/src'
+			},
+			map:[
+				[/^.*\.(?:css|js)(.*)$/i],'$1?helloworld'
+			],
+			preload:['jquery','underscore']
+		});
+		seajs.use('app/src/main',function(main){
+			console.log(main);
+		})
+	</script>
+</body>
+</html>
